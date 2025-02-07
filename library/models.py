@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Author(models.Model):
-    id = models.CharField(primary_key=True, max_length=255)  # Unique identifier for the author
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)  # Name of the author
     gender = models.CharField(max_length=50, blank=True, null=True)  # Gender (optional)
     image_url = models.URLField(max_length=500, blank=True, null=True)  # URL of the author's image
