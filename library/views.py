@@ -1,0 +1,50 @@
+from rest_framework import generics, filters
+from .models import Author, Book
+from .serializers import AuthorSerializer, BookSerializer
+
+
+# Author API Views
+class AuthorListCreateView(generics.ListCreateAPIView):
+    """
+    GET: List all authors
+    POST: Create a new author
+    """
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+
+class AuthorRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET: Retrieve details of a specific author
+    PUT: Update a specific author
+    DELETE: Delete a specific author
+    """
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+
+# Book API Views
+class BookListCreateView(generics.ListCreateAPIView):
+    """
+    GET: List all books
+    POST: Create a new book
+    """
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+    # Add filter backend for search functionality
+    filter_backends = [filters.SearchFilter]
+
+    # Specify the field you want to search
+    search_fields = ['title']  # Assuming the model field is `title`
+
+
+
+class BookRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET: Retrieve details of a specific book
+    PUT: Update a specific book
+    DELETE: Delete a specific book
+    """
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
