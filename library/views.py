@@ -23,7 +23,6 @@ class AuthorRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AuthorSerializer
 
 
-# Book API Views
 class BookListCreateView(generics.ListCreateAPIView):
     """
     GET: List all books
@@ -31,12 +30,8 @@ class BookListCreateView(generics.ListCreateAPIView):
     """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-
-    # Add filter backend for search functionality
     filter_backends = [filters.SearchFilter]
-
-    # Specify the field you want to search
-    search_fields = ['title']  # Assuming the model field is `title`
+    search_fields = ['title', "author__name"]
 
 
 

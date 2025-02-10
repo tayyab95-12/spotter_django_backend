@@ -137,7 +137,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-}# Allauth settings
+}
+
+# Allauth settings
 ACCOUNT_EMAIL_REQUIRED = False  # Make email optional
 ACCOUNT_EMAIL_VERIFICATION = "none"  # Disable email verification
 ACCOUNT_USERNAME_REQUIRED = True
