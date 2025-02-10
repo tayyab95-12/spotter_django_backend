@@ -31,7 +31,7 @@ class BookListCreateView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['title', "author__name"]
+    search_fields = ['title', "authors__name"]
 
 
 
